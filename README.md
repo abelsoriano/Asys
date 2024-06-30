@@ -1,2 +1,2 @@
-# Asys
-Systema de Registro
+# iglesia
+Sistema de Registro Iglesia
