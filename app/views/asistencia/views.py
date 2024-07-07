@@ -14,11 +14,12 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
+from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
 from django.views.generic import *
 
-from app.forms import AsistenciaForm
+from app.forms import AsistenciaForm, NotaForm
 from app.models import *
 
 from django.shortcuts import redirect, get_object_or_404
@@ -185,7 +186,6 @@ class AttendanceDetailsView(View):
 
         return JsonResponse({'details': details})
 
-
 class AttendaceUpdate(UpdateView):
     model = Attendance
     form_class = AsistenciaForm
@@ -225,5 +225,4 @@ class AttendaceUpdate(UpdateView):
         context['list_url'] = self.success_url
         context['action'] = 'edit'
         return context
-
 

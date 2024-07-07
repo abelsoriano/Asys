@@ -59,7 +59,6 @@ class MemberForm(forms.ModelForm):
 
 
 # Formulario para crear servicio
-
 class PersonaWidget(ModelSelect2Widget):
     search_fields = [
         'nombre__icontains',
@@ -104,14 +103,16 @@ class ServicioForm(ModelForm):
             self.save_m2m()
         return data
 
-
 class AsistenciaForm(forms.ModelForm):
     class Meta:
         model = Attendance
         fields = ['miembro', 'date', 'present']
 
-#
-#
-#
-#
-#
+class NotaForm(forms.ModelForm):
+    class Meta:
+        model = Nota
+        fields = ['titulo', 'contenido']
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el título'}),
+            'contenido': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese el contenido'}),
+        }
