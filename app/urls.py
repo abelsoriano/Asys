@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from app.views.asistencia import views
 from app.views.asistencia.views import *
-from app.views.notas.views import NotaCreateView, NotaListView
+from app.views.notas.views import *
 from app.views.persona.views import *
 from app.views.servicio.views import *
 
@@ -29,8 +29,10 @@ urlpatterns = [
     path('guardar-status/', views.guardar_status, name='guardar_status'),
     path('asistencia/edit/<int:pk>/', AttendaceUpdate.as_view(), name='asistencia_update'),
 
-    path('notas/crear/', NotaCreateView.as_view(), name='nota_create'),
-    path('notas/list', NotaListView.as_view(), name='nota_list'),
+    path('notas/list', NotaView.as_view(), name='nota_list'),
+    path('notas/delete/<int:pk>/', NotaDeleteView.as_view(), name='nota_delete'),
+    path('notas/cargar_mas/', cargar_mas_notas, name='cargar_mas_notas'),
+    path('notas/update/<int:pk>/', NotaUpdateView.as_view(), name='nota_update'),
 
 
     # urls.py

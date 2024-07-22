@@ -172,10 +172,23 @@ class MiembroStatus(models.Model):
         verbose_name = 'StatusMiembro'
         verbose_name_plural = 'StatusMiembros'
 
+from django.db import models
+from django.utils import timezone
+
 class Nota(models.Model):
-    titulo = models.CharField(max_length=100, verbose_name='Título')
-    contenido = models.TextField(verbose_name='Contenido')
-    fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creación')
+    titulo = models.CharField(max_length=100)
+    contenido = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_modificacion = models.DateTimeField(auto_now=True)  # Este campo se actualiza automáticamente
 
     def __str__(self):
         return self.titulo
+
+    def toJSON(self):
+        return {
+            'id': self.id,
+            'titulo': self.titulo,
+            'contenido': self.contenido,
+            'fecha_creacion': self.fecha_creacion,
+            'fecha_modificacion': self.fecha_modificacion,
+        }

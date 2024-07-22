@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os.path
-from celery.schedules import crontab
+# from celery.schedules import crontab
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,16 +133,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Configura tu broker de mensajes aquí
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-
-CELERY_BEAT_SCHEDULE = {
-    'check-birthdays-every-day': {
-        'task': 'app.tasks.check_birthdays',
-        'schedule': crontab(hour=0, minute=0),
-    },
-}
 
 
 

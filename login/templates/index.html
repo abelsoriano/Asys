@@ -2,7 +2,130 @@
 {% load static %}
 
 {% block contents %}
-<h1 style="justify-content: center;">Bienvenido</h1>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><<link rel="stylesheet" href="{% static 'style.css' %}" />
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="elegant-calencar d-md-flex">
+        <div class="wrap-header d-flex align-items-center">
+          <p id="reset">reset</p>
+          <div id="header" class="p-0">
+            <div class="pre-button d-flex align-items-center justify-content-center">
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <div class="head-info">
+              <div class="head-day"></div>
+              <div class="head-month"></div>
+            </div>
+            <div class="next-button d-flex align-items-center justify-content-center">
+              <i class="fa fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="calendar-wrap">
+          <table id="calendar">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
 
 
+
+<div class="container">
+
+    <link href="{% static 'css/calendar.css' %}" rel="stylesheet">
+    
+    <div class="list row">
+      <h2>Lista de Notas</h2>
+      <div>
+        <a href="{% url 'asys:nota_create' %}" class="btn btn-outline-primary"><i class="fa-duotone fa-plus"></i> Agregar</a>
+      </div>
+      {% for nota in notas %}
+      <div class="card text-white bg-warning">
+        <div class="card-header">{{ nota.titulo }}</div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="card-text">{{ nota.contenido }}</p>
+            <footer class="blockquote-footer text-muted">
+              {{ nota.fecha_creacion }} <cite title="Source Title"></cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    {% endfor %}
+    </div>

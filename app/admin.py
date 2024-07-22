@@ -6,6 +6,7 @@ admin.site.register(Miembro)
 admin.site.register(Cargo)
 admin.site.register(Estado)
 admin.site.register(Servicio)
+admin.site.register(Nota)
 
 
 class AttendanceAdmin(admin.ModelAdmin):

@@ -52,6 +52,7 @@ class MembersListView(ListView):
         context['list_url'] = reverse_lazy('miembro_list')
         context['entity'] = 'Miembros'
         return context
+    
 class MembersCreate(CreateView):
     model = Miembro
     form_class = MemberForm
